@@ -36,7 +36,12 @@ function onSearch(event) {
         });
         return; 
     }
-    
+    //відображаєм повідомлення про завантаження зображень
+    loader.style.display = 'flex';
+    event.currentTarget.elements.search.value = 'Search images....';
+
+    const inputValue = event.target.elements.search.value;
+
 }
 
 
