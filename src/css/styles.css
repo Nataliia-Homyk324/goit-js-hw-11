@@ -91,6 +91,10 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
   padding: 0 15px;
   margin-top: 30px;
