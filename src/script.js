@@ -25,7 +25,7 @@ function onSearch(event) {
         message: `The search query cannot be empty`,
         timeout: 5000,
         close: false,
-        position: 'topLeft',
+        position: 'bottomLeft',
         backgroundColor: '#ef4040',
         messageSize: 16,
         messageColor: '#fff',
@@ -50,8 +50,8 @@ function onSearch(event) {
       if (!data.hits.length) {
         iziToast.show({
         title: 'Sorry,',
-        message: ' there are no images matching your search query. Please try again!',
-        position: 'topLeft',
+        message: 'there are no images matching your search query. Please try again!',
+        position: 'bottomLeft',
         backgroundColor: '#ef4040',
         messageSize: 16,
         messageColor: '#fff',
