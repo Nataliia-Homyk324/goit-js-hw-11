@@ -45,18 +45,18 @@ img {
 }
 
 body {
-  /* background-color: #E0FFFF; */
-  
-    padding: 8px 25px;
-    margin-left: -10px;
-    font-size: 16px;
+  background-color: #BA55D3;
+  padding: 8px 25px;
+  height: 100dvw;
+   
 }
 .form-search {
-  /* border-bottom: 1px solid #5c6297; */
+ 
   padding: 35px 0;
   display: flex;
   justify-content: center;
   gap: 16px;
+ 
 }
 
 .input-search {
@@ -69,8 +69,7 @@ body {
 
 .input-search:focus {
   border-color: #0000FF;
-  /* color: #0000FF; */
-  font-size: 16px;
+   font-size: 16px;
 }
 
 .btn-search {
@@ -92,18 +91,16 @@ body {
 }
 
 .container {
+  
   padding: 0 15px;
-
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
-.loader{
-  display: flex;
-  justify-content: center;
-  /* display: none; */
-  font-size: 16px;
+
   
-}
+
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -115,14 +112,10 @@ body {
 
 .gallery-item {
   margin-left: 20px;
-  transition: transform .3s;
+ 
 }
 
-.gallery-item:hover,
-.gallery-item:focus {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transform: scale(1.05);
-}
+
 
 .gallery-link {
   min-width: 320px;
@@ -139,8 +132,7 @@ body {
   height: 30vh;
   object-fit: cover;
 
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  
 }
 
 .thumb-block {
@@ -155,10 +147,7 @@ body {
   padding: 10px 0;
 }
 
-.gallery-item:hover .thumb-block {
-  border-color: #8791e0;
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-}
+
 
 .block {
   text-align: center;
@@ -179,4 +168,46 @@ body {
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: 0.04em;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 10px solid #FFF;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  inset: -10px;
+  border-radius: 50%;
+  border: 10px solid #FF3D00;
+  animation: prixClipFix 2s infinite linear;
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
 }

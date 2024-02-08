@@ -3,6 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+
 import iconRejected from './img/octagon.png'
 
 const formSearch = document.querySelector('.form-search');
@@ -10,12 +11,11 @@ const listImages = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
 
-//повідомлення Loading images, please wait... не відображаєм на сторінці 
 loader.style.display = 'none';
-// слухач події сабміт - форма
+
 formSearch.addEventListener('submit', onSearch);
 
-//ця функція обробник події сабміт  
+
 function onSearch(event) {
     //сброс дефолтних налаштувань форми після події сабміт
     event.preventDefault();
@@ -37,12 +37,11 @@ function onSearch(event) {
         return; 
     }
     //відображаєм повідомлення про завантаження зображень
-    loader.style.display = 'flex';
-
-    
-
+    loader.style.display = 'block';
 
     const inputValue = event.target.elements.search.value.trim();
+//  очищаємо галерею перед новим пошуком
+    listImages.innerHTML = '';
 
     getPictures(inputValue)
     .then(data => {
@@ -64,9 +63,7 @@ function onSearch(event) {
         console.log(data.hits);
         console.log(data.hits.length);
 
-   
 
-    //   listImages.innerHTML = ("beforeend", createMarkup(data.hits));
      listImages.insertAdjacentHTML('afterbegin', createMarkup(data.hits));
       const refreshPage = new SimpleLightbox('.gallery a', {
         captions: true,
