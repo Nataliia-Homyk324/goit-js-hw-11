@@ -18,10 +18,11 @@ formSearch.addEventListener('submit', onSearch);
 
 function onSearch(event) {
     //сброс дефолтних налаштувань форми після події сабміт
-    event.preventDefault();
+  event.preventDefault();
+  
     // поле введення запиту не може бути порожнім при натисканні на кнопку відправки форми
-    if (event.target.elements.search.value === '') {
-        iziToast.error({
+    if (event.target.elements.search.value.trim() === '') {
+        iziToast.show({
         message: `The search query cannot be empty`,
         timeout: 5000,
         close: false,
@@ -29,7 +30,7 @@ function onSearch(event) {
         backgroundColor: '#ef4040',
         messageSize: 16,
         messageColor: '#fff',
-        title: 'Error',
+        title: 'Sorry,',
         titleSize: 16,
         titleColor: '#fff',
         iconUrl: iconRejected,
@@ -39,13 +40,16 @@ function onSearch(event) {
     //відображаєм повідомлення про завантаження зображень
     loader.style.display = 'block';
 
-    const inputValue = event.target.elements.search.value.trim();
+  const inputValue = event.target.elements.search.value.trim();
+  
+
+
 //  очищаємо галерею перед новим пошуком
     listImages.innerHTML = '';
 
     getPictures(inputValue)
     .then(data => {
-      loader.style.display = 'none';
+     
 
       if (!data.hits.length) {
         iziToast.show({
@@ -75,9 +79,24 @@ function onSearch(event) {
       formSearch.reset();
     })
     .catch((error) => {
-      loader.style.display = 'none';
+      
       console.log(error);
-    });
+      iziToast.show({
+        title: 'Sorry,',
+        message: 'try again!',
+        position: 'bottomLeft',
+        backgroundColor: '#ef4040',
+        messageSize: 16,
+        messageColor: '#fff',
+        titleSize: 16,
+        titleColor: '#fff',
+        iconUrl: iconRejected,
+        });
+
+    })
+  
+  .finally(() => loader.style.display = 'none');
+  
 
 }
 
@@ -118,19 +137,19 @@ function createMarkup(arr) {
           </a>
           <div class="thumb-block">
             <div class="block">
-              <h2 class="tittle">Likes</h2>
+              <h2 class="title">Likes</h2>
               <p class="amount">${likes}</p>
             </div>
             <div class="block">
-              <h2 class="tittle">Views</h2>
+              <h2 class="title">Views</h2>
               <p class="amount">${views}</p>
             </div>
             <div class="block">
-              <h2 class="tittle">Comments</h2>
+              <h2 class="title">Comments</h2>
               <p class="amount">${comments}</p>
             </div>
             <div class="block">
-              <h2 class="tittle">Downloads</h2>
+              <h2 class="title">Downloads</h2>
               <p class="amount">${downloads}</p>
             </div>
           </div>
