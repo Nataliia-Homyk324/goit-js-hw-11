@@ -101,6 +101,8 @@ function onSearch(event) {
 }
 
 
+
+
 function getPictures(name) {
   const BASE_URL = 'https://pixabay.com/api/';
     const KEY = '42245088-70138ac1b5442bea0784205eb';
@@ -122,6 +124,8 @@ function getPictures(name) {
     })
     
 }
+
+
 
 
 function createMarkup(arr) {
